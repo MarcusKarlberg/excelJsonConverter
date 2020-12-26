@@ -35,7 +35,7 @@ async function convert() {
     const result = await convertXlsToJson(fileData.path);
     console.log('conversion DONE!');
     console.log('writing to file...');
-    await writeToFile(pathOnly, JSON.stringify(result));
+     await writeToFile(pathOnly, JSON.stringify(result['Sample-spreadsheet-file']));
     showResult(pathOnly);
 }
 
