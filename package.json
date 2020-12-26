@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "converts requirement excel spreadsheets to json",
   "main": "main.js",
-  "homepage": "www.cevd.eu",
+  "homepage": "https://github.com/MarcusKarlberg/excelJsonConverter/tree/main",
   "scripts": {
     "postinstall": "install-app-deps",
-    "start": "npm install && electron .",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
