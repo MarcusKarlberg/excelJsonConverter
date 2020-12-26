@@ -1,0 +1,53 @@
+{
+  "name": "converter",
+  "version": "1.0.0",
+  "description": "converts requirement excel spreadsheets to json",
+  "main": "main.js",
+  "homepage": "www.cevd.eu",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Marcus Karlberg <marcus.karlberg@hotmail.com>",
+  "license": "ISC",
+  "build": {
+    "appId": "237",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "devDependencies": {
+    "convert-excel-to-json": "1.7.0",
+    "electron": "11.1.1",
+    "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "xyz": "^4.0.0",
+    "convert-excel-to-json": "1.7.0"
+  }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>converter</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body style="background: white;">
+    <h1>requirement - xls to json converter</h1>
+    <p>Select a Requirements .xls(x) file and press the convert button, when the file is converted the program will show you the location of the new json file</p>
+    <br />
+    <input type="file"
+       id="file_input"
+       accept=".xls, .xlsx">
+    <button id="convert">Convert</button>
+    <script>require('./renderer.js')</script>
+</body>
+</html>
