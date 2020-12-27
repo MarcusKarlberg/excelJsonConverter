@@ -7,12 +7,28 @@ const {dialog} = require('electron').remote;
 function convertXlsToJson(path) {
     console.log('converting...' + path);
     return excelToJson({
-        sourceFile: path
+        sourceFile: path,
+        columnToKey: {
+            '*': '{{columnHeader}}'
+        }
     });
 }
 
-function writeToFile(filePath, jsonContent) {
-    fs.writeFile(filePath.concat('requirements.json'), jsonContent, function (err) {
+function setJsonFileName(fileName, filePath) {
+    var jsonFileName;
+    if(string.includes('.xls')) {
+        jsonFileName = fileName.replace('.xls', '.json');
+    } else if(string.includes('.xlsx')) {
+        jsonFileName = fileName.replace('.xlsx', '.json');
+    } else {
+        return filePath + 'undefined.json';
+    }
+ return jsonFileName;
+}
+
+function writeToFile(fileName, filePath, jsonContent) {
+    
+    fs.writeFile(setJsonFileName(fileName, filePath), jsonContent, function (err) {
         if (err) return console.log(err);
         console.log('writing DONE!');
     });
@@ -31,12 +47,12 @@ function showResult(path) {
 
 async function convert() {
     var fileData = document.querySelector('#file_input').files[0];
-    var pathOnly = fileData.path.replace(fileData.name,'');
+    var path = fileData.path.replace(fileData.name,'');
     const result = await convertXlsToJson(fileData.path);
     console.log('conversion DONE!');
     console.log('writing to file...');
-    await writeToFile(pathOnly, JSON.stringify(result['Sample-spreadsheet-file']));
-    showResult(pathOnly);
+    await writeToFile(fileData.name, path, JSON.stringify(result[Object.keys(result)[0]]));
+    showResult(path);
 }
 
 document.querySelector('#convert').addEventListener('click', () => {
