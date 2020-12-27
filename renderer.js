@@ -16,14 +16,14 @@ function convertXlsToJson(path) {
 
 function setJsonFileName(fileName, filePath) {
     var jsonFileName;
-    if(string.includes('.xls')) {
+    if(fileName.includes('.xls')) {
         jsonFileName = fileName.replace('.xls', '.json');
-    } else if(string.includes('.xlsx')) {
+    } else if(fileName.includes('.xlsx')) {
         jsonFileName = fileName.replace('.xlsx', '.json');
     } else {
-        return filePath + 'undefined.json';
+        return filePath.concat('undefined.json').trim();
     }
- return jsonFileName;
+ return filePath.concat(jsonFileName).trim();
 }
 
 function writeToFile(fileName, filePath, jsonContent) {
